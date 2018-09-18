@@ -23,7 +23,8 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.get("/dashboard", loggedin, (req, res, next) => {
-  res.render("dashboard");
+  console.log(req.user.username);
+  res.render("dash", { user: req.user.username });
 });
 
 router.get("/logout", (req, res, next) => {
