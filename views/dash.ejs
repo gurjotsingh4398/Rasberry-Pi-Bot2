@@ -46,6 +46,8 @@
 
   <script>
     const socket = io();
+    let temp = false;
+    let startDate, endDate;
 
     socket.on('connect', () => {
       document.getElementById('arrowState').style.display = 'none';
@@ -67,34 +69,91 @@
 
     $("#arrow-up")
       .mousedown(() => {
-        socket.emit('arrow', 'up');
+        if (temp == false) {
+          temp = true;
+          startDate = new Date();
+          socket.emit('arrow', 'up');
+        }
       })
       .mouseup(() => {
-        socket.emit('arrow', 'stop');
+        if (temp == true) {
+          temp = false
+          endDate = new Date();
+          let seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+          console.log('up :', seconds);
+          socket.emit('arrow', {
+            time: seconds,
+            direction: 'up',
+            state: 'stop'
+          });
+        }
       });
+
 
     $("#arrow-down")
       .mousedown(() => {
-        socket.emit('arrow', 'down');
+        if (temp == false) {
+          temp = true;
+          startDate = new Date();
+          socket.emit('arrow', 'down');
+        }
       })
       .mouseup(() => {
-        socket.emit('arrow', 'stop');
+        if (temp == true) {
+          temp = false
+          endDate = new Date();
+          let seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+          console.log('down :', seconds);
+          socket.emit('arrow', {
+            time: seconds,
+            direction: 'down',
+            state: 'stop'
+          });
+        }
       });
 
     $("#arrow-left")
       .mousedown(() => {
-        socket.emit('arrow', 'left');
+        if (temp == false) {
+          temp = true;
+          startDate = new Date();
+          socket.emit('arrow', 'left');
+        }
       })
       .mouseup(() => {
-        socket.emit('arrow', 'stop');
+        if (temp == true) {
+          temp = false
+          endDate = new Date();
+          let seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+          console.log('left :', seconds);
+          socket.emit('arrow', {
+            time: seconds,
+            direction: 'left',
+            state: 'stop'
+          });
+        }
       });
 
     $("#arrow-right")
       .mousedown(() => {
-        socket.emit('arrow', 'right');
+        if (temp == false) {
+          temp = true;
+          startDate = new Date();
+          socket.emit('arrow', 'right');
+        }
       })
       .mouseup(() => {
-        socket.emit('arrow', 'stop');
+        if (temp == true) {
+          temp = false
+          endDate = new Date();
+          let seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+          console.log('right :', seconds);
+          socket.emit('arrow', {
+            time: seconds,
+            direction: 'right',
+            state: 'stop'
+          });
+        }
       });
 
   </script>

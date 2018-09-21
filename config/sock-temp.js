@@ -6,8 +6,6 @@ const pythonOptions = {
   // scriptPath: '/home/pi/Robot4x4Raspberry/'
 };
 
-let path = [];
-
 module.exports = socket => {
   // var robot = initController();
 
@@ -15,8 +13,8 @@ module.exports = socket => {
     console.log("connected server");
     user.on("arrow", state => {
       //robot.send(state + "\n"); //sending to python file the state of robot
-      if (state.state == "stop") {
-        socket.emit("actualState", state.state); // broadcasting to every user
+      if (state == "stop") {
+        socket.emit("actualState", state); // broadcasting to every user
       } else {
         let str = "";
         if (state == "up") {
@@ -36,10 +34,10 @@ module.exports = socket => {
     });
   });
 
-  // process.on("SIGINT", function() {
-  //   robot.send("close");
-  //   robot.end(0);
-  // });
+  process.on("SIGINT", function() {
+    robot.send("close");
+    robot.end(0);
+  });
 };
 
 // function initController() {

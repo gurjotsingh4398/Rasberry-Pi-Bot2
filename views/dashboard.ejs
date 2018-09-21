@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <title>Dashboard</title>
@@ -10,4 +10,108 @@
       <input type="submit" value="Logout">
     </form>
   </body>
+</html> -->
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="/javascripts/jquery-3.3.1.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+
+  <link rel='stylesheet' href='/stylesheets/dash.css' />
+
+</head>
+
+<body>
+  <nav>
+    <div>
+      <h1>Robot Controller</h1>
+    </div>
+    <ul>
+      <li><a class="logout" href="/logout">Logout</a></li>
+    </ul>
+  </nav>
+
+  <h1>
+    Welcome
+    <%= user %>!
+  </h1>
+
+  <div class="overlay"></div>
+
+  <div id="arrow-up"><a><img src="/images/arrow-boxed-outline-filled.png" alt="arrow"></a></div>
+  <div id="arrow-left"><a><img src="/images/arrow-boxed-outline-filled.png" alt="arrow"></a></div>
+  <div id="arrow-right"><a><img src="/images/arrow-boxed-outline-filled.png" alt="arrow"></a></div>
+  <div id="arrow-down"><a><img src="/images/arrow-boxed-outline-filled.png" alt="arrow"></a></div>
+
+  <div>
+    <h3 class="text-muted">
+      <b>Actual state of the Robot:</b>
+    </h3>
+    <br>
+    <div id="actualState">
+      <h3 id="arrowState"></h3>
+      <h3 id="arrowStateS">Stopped</h3>
+    </div>
+  </div>
+
+  <script>
+    const socket = io();
+
+    socket.on('connect', () => {
+      document.getElementById('arrowState').style.display = 'none';
+    });
+
+    socket.on('actualState', (data) => {
+      if (data == 'stop') {
+        $("#arrowState").hide();
+        $("#arrowStateS").show();
+      }
+      else {
+        $("#arrowState")
+          .html(data)
+          .show()
+        $("#arrowStateS").hide();
+
+      }
+    });
+
+    $("#arrow-up")
+      .mousedown(() => {
+        socket.emit('arrow', 'up');
+      })
+      .mouseup(() => {
+        socket.emit('arrow', 'stop');
+      });
+
+    $("#arrow-down")
+      .mousedown(() => {
+        socket.emit('arrow', 'down');
+      })
+      .mouseup(() => {
+        socket.emit('arrow', 'stop');
+      });
+
+    $("#arrow-left")
+      .mousedown(() => {
+        socket.emit('arrow', 'left');
+      })
+      .mouseup(() => {
+        socket.emit('arrow', 'stop');
+      });
+
+    $("#arrow-right")
+      .mousedown(() => {
+        socket.emit('arrow', 'right');
+      })
+      .mouseup(() => {
+        socket.emit('arrow', 'stop');
+      });
+
+  </script>
+</body>
+
 </html>
