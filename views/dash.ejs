@@ -53,6 +53,7 @@
       document.getElementById('arrowState').style.display = 'none';
     });
 
+
     socket.on('actualState', (data) => {
       if (data == 'stop') {
         $("#arrowState").hide();
