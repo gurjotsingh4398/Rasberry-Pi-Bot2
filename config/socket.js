@@ -1,4 +1,4 @@
-const controls = require("./controls");
+//const controls = require("./controls");
 
 let path = [];
 
@@ -8,35 +8,35 @@ module.exports = socket => {
     user.on("arrow", state => {
       if (state.state == "stop") {
         socket.emit("actualState", state.state); // broadcasting to every user
-        controls.stop();
-        console.log("stopped");
+        //controls.stop();
+        //console.log("stopped");
         path.push({
           direction: state.direction,
           time: state.time
         });
-        console.log(path);
+        //console.log(path);
       } else {
         let str = "";
         if (state == "up") {
           str = "Moving Forward";
-          console.log("forwad called");
-          controls.forward();
-          console.log("forward done");
+          //console.log("forwad called");
+          //controls.forward();
+          //console.log("forward done");
         }
         if (state == "left") {
           str = "Moving Left";
-          controls.left();
+          //controls.left();
         }
         if (state == "right") {
           str = "Moving Right";
-          controls.right();
+          //controls.right();
         }
         if (state == "down") {
           str = "Moving Backward";
-          controls.backward();
+          //controls.backward();
         }
         socket.emit("actualState", str); // broadcasting to every user
-        console.log("all done");
+        //console.log("all done");
       }
     });
   });

@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <a href="/login">Login</a>
-    <span>or</span>
-    <a href="/signup">Signup</a>
-  </body>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+</head>
+
+<body>
+  <img src="/images/eye2.png" alt="Logo" id="logo">
+  <h1>
+    <%= title %>
+  </h1>
+  Enter Your Name:
+  <form action="/dashboard" method="get">
+    <input type="text" name="name" id="name">
+    <!-- <a href="/login" class="login">Login</a>
+  <span>or</span>
+  <a href="/signup" class="signup">Signup</a> -->
+    <input type="submit" value="Dashboard">
+  </form>
+</body>
+
 </html>

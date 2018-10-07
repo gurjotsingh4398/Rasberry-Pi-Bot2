@@ -1,0 +1,22 @@
+#logo {
+  width: 200px;
+}
+
+input[type="submit"] {
+  text-decoration: none;
+  background: red;
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+  padding: 20px;
+  border-radius: 50px;
+  font-size: 1.5em;
+  color: white;
+  outline: none;
+  border: 0;
+  /* box-shadow: 2px 2px; */
+}
+
+input[type="submit"]:hover {
+  box-shadow: 10px 20px 20px 20px;
+}
