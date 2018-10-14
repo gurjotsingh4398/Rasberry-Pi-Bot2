@@ -5,23 +5,33 @@
   <title>
     <%= title %>
   </title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
   <link rel='stylesheet' href='/stylesheets/index.css' />
 </head>
 
 <body>
-  <img src="/images/eye2.png" alt="Logo" id="logo">
-  <h1>
-    <%= title %>
-  </h1>
-  Enter Your Name:
-  <form action="/dashboard" method="get">
-    <input type="text" name="name" id="name">
-    <!-- <a href="/login" class="login">Login</a>
-  <span>or</span>
-  <a href="/signup" class="signup">Signup</a> -->
-    <input type="submit" value="Dashboard">
-  </form>
+  <div class="circle">
+    <img class="eye" src="/images/eye2.png" alt="logo">
+  </div>
+  <div id="box">
+    <!-- <img src="/images/eye2.png" alt="Logo" id="logo"> -->
+    <!-- <h1>
+      <%= title %>
+    </h1> -->
+    <div class="content">
+      <div class="content__container">
+        <p class="content__container__text">Robo</p>
+        <ul class="content__container__list">
+          <li class="content__container__list__item">Pi...</li>
+          <li class="content__container__list__item">Eye</li>
+        </ul>
+      </div>
+    </div>
+    <p class="input__name">Enter Your Name:</p>
+    <form action="/dashboard" method="get">
+      <input type="text" name="name" id="name">
+      <input type="submit" value="Dashboard">
+    </form>
+  </div>
 </body>
 
 </html>

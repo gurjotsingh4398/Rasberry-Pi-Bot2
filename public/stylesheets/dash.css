@@ -11,13 +11,17 @@ body {
   color: white;
 }
 
+.head {
+  text-align: center;
+}
+
 .overlay {
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: -1;
 }
 
@@ -77,6 +81,19 @@ nav div:first-child h1 {
 
 /* Arrow styling */
 
+.main {
+  display: inline-block;
+  margin-top: 2rem;
+  margin-left: 5%;
+}
+
+.control {
+  display: inline-block;
+  margin-left: 25px;
+  /* margin-top: 40px;
+  margin-left: 80px; */
+}
+
 #arrow-left,
 #arrow-right {
   display: inline-block;
@@ -102,4 +119,18 @@ nav div:first-child h1 {
 #arrow-down img {
   width: 100px;
   transform: rotate(90deg);
+}
+
+.state {
+  margin-top: 2rem;
+}
+
+#arrowState {
+  /* color: green; */
+  font-size: 2rem;
+}
+
+#arrowStateS {
+  /* color: red; */
+  font-size: 2rem;
 }

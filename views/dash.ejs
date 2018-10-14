@@ -21,29 +21,29 @@
     </ul>
   </nav>
 
-  <h1>
+  <h1 class="head">
     Welcome
     <%= user %>!
   </h1>
 
   <div class="overlay"></div>
-
-  <div id="arrow-up"><a><img src="/images/arrow-boxed-outline-filled.png" alt="arrow"></a></div>
-  <div id="arrow-left"><a><img src="/images/arrow-boxed-outline-filled.png" alt="arrow"></a></div>
-  <div id="arrow-right"><a><img src="/images/arrow-boxed-outline-filled.png" alt="arrow"></a></div>
-  <div id="arrow-down"><a><img src="/images/arrow-boxed-outline-filled.png" alt="arrow"></a></div>
-
-  <div>
-    <h3 class="text-muted">
-      <b>Actual state of the Robot:</b>
-    </h3>
-    <br>
-    <div id="actualState">
-      <h3 id="arrowState"></h3>
-      <h3 id="arrowStateS">Stopped</h3>
+  <div class="main">
+    <div class="control">
+      <div id="arrow-up"><a><img src="/images/arrow-boxed-outline-filled.png" alt="arrow"></a></div>
+      <div id="arrow-left"><a><img src="/images/arrow-boxed-outline-filled.png" alt="arrow"></a></div>
+      <div id="arrow-right"><a><img src="/images/arrow-boxed-outline-filled.png" alt="arrow"></a></div>
+      <div id="arrow-down"><a><img src="/images/arrow-boxed-outline-filled.png" alt="arrow"></a></div>
+    </div>
+    <div class="state">
+      <h3 class="text-muted">
+        <b><u>Actual state of the Robot:</u></b>
+      </h3>
+      <div id="actualState">
+        <h3 id="arrowState"></h3>
+        <h3 id="arrowStateS">Stopped</h3>
+      </div>
     </div>
   </div>
-
   <script>
     const socket = io();
     let temp = false;
